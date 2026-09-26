@@ -5,15 +5,6 @@ class BT5
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        /*Console.WriteLine("Nhập vào 1 số nguyên dương X");
-        string ? inputX = Console.ReadLine();
-        int x = int.Parse(inputX);
-        Console.WriteLine("Nhập vào 1 số nguyên dương Y");
-        string ? inputY = Console.ReadLine();
-        int y = int.Parse(inputY);
-        Console.WriteLine("Nhập vào 1 số nguyên dương Z");
-        string ? inputZ = Console.ReadLine();
-        int z = int.Parse(inputZ);*/
         
         Console.WriteLine("Nhập vào 1 số nguyên dương bán kính R");
         string ? inputR = Console.ReadLine();
