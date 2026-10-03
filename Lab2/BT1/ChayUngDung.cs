@@ -11,6 +11,8 @@ class ChayUngDung
         dl.themSV("SV02", "Nhân", 15, false, new List<double>{5.6, 8.7, 6.9, 9.3 });   
         dl.themSV("SV03", "Linh", 16, true, new List<double>{3.6, 5.1, 6.2, 5.4 });
         dl.themSV("SV04", "Tú", 12, true, new List<double>{7.7, 8.7, 9.9 });
+        dl.timKiemMaSV("SV03");
+        dl.capNhatSV("SV02","Hà Súc Vật Nhân", 21, false, new List<double>(){2.1, 0.7, 0.4});
         dl.xemDSSinhVien();
     }
 }

@@ -15,6 +15,44 @@ public class ThaoTacDuLieu
         }
         return false;
     }
+
+    public void timKiemMaSV(string masv)
+    {
+        foreach (Students st in sinhVien )
+        {
+            if (st.MaSv.Equals(masv))
+            {
+                Console.Write($"Tìm thấy SV {st.MaSv} - {st.HoTen}");
+                Console.WriteLine();
+                return;
+            }
+            
+        }
+        Console.WriteLine("Không tìm thấy");
+    }
+
+    public void capNhatSV(string maSv, string hoTen, int tuoi, bool gioiTinh, List<double> diem)
+    {
+        foreach (var updateST in sinhVien)
+        {
+            if (updateST.MaSv.Equals(maSv))
+            {
+                updateST.HoTen = hoTen;
+                updateST.Tuoi = tuoi;
+                updateST.GioiTinh = gioiTinh;
+                foreach (var d in diem)
+                {
+                    updateST.themDiem(d);
+
+                }
+
+                Console.WriteLine("Cập nhật thành công");
+                return;
+            }
+        }
+        Console.WriteLine("Sinh viên không tồn tại");
+
+    }
     public void themSV(string maSv, string hoTen, int tuoi, bool gioiTinh, List<double> diem)
     {
         if (kiemTraMaSV(maSv))
