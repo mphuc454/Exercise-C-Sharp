@@ -40,6 +40,7 @@ public class ThaoTacDuLieu
                 updateST.HoTen = hoTen;
                 updateST.Tuoi = tuoi;
                 updateST.GioiTinh = gioiTinh;
+                updateST.DiemMh.Clear();
                 foreach (var d in diem)
                 {
                     updateST.themDiem(d);
@@ -53,11 +54,27 @@ public class ThaoTacDuLieu
         Console.WriteLine("Sinh viên không tồn tại");
 
     }
+
+    public void deleteSV(string maSV)
+    {
+        foreach (var delSV in sinhVien)
+        {
+            if (delSV.MaSv.Equals(maSV))
+            {
+                sinhVien.Remove(delSV);
+                Console.WriteLine("Đã xoá thành công");
+                break;
+            }
+        }
+        Console.WriteLine("Đã xoá thành công");
+
+    }
     public void themSV(string maSv, string hoTen, int tuoi, bool gioiTinh, List<double> diem)
     {
         if (kiemTraMaSV(maSv))
         {
             Console.WriteLine("Mã sv đã tồn tại");
+            return;
         }
         Students newST = new Students();
         newST.MaSv = maSv;  
@@ -72,6 +89,14 @@ public class ThaoTacDuLieu
         sinhVien.Add(newST);
     }
 
+    public double diemTBSV(string masv)
+    {
+        var sv = sinhVien.Where(sv => sv.MaSv.Equals(masv))
+            .Select(sv => sv.diemTB()).FirstOrDefault();
+        return sv;
+    }
+
+    
     public void xemDSSinhVien()
     {
         Console.WriteLine("XEM DANH SÁCH SINH VIÊN: ");

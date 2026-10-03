@@ -38,6 +38,11 @@ public class Students
         set => tuoi = value;
     }
 
+    public List<double> DiemMh
+    {
+        get => diemMH;
+    }
+
     public bool GioiTinh
     {
         get => gioiTinh;
@@ -45,7 +50,7 @@ public class Students
     }
     public void themDiem(double diem)
     {
-        if (diem >= 0 || diem <= 10)
+        if (diem >= 0 && diem <= 10)
         {
             diemMH.Add(diem);
         }
@@ -58,6 +63,11 @@ public class Students
     public string xuatDiem()
     {
         return string.Join(", ", diemMH);
+    }
+
+    public double diemTB()
+    {
+        return diemMH.Count > 0 ? diemMH.Average() : 0;
     }
     public override string ToString()
     {
