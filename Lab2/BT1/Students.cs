@@ -2,110 +2,67 @@
 
 public class Students
 {
-    private string mssv;
-    private string nameStudent;
-    private int ageStudent;
-    private string genderStudent;
-    private List<MonHoc> danhsachMonHoc;
+    private string maSV;
+    private string hoTen;
+    private int tuoi;
+    private bool gioiTinh;
+    private List<double> diemMH = new List<double>();
 
-    public Students(string mssv, string nameStudent, int ageStudent, string genderStudent)
+    public Students()
     {
-        this.mssv = mssv;
-        this.nameStudent = nameStudent;
-        this.ageStudent = ageStudent;
-        this.genderStudent = genderStudent;
-        this.danhsachMonHoc = new List<MonHoc>();
     }
 
-    public string MSSV
+    public Students(string maSv, string hoTen, int tuoi, bool gioiTinh)
     {
-        get
-        {
-            if (this.mssv == null)
-            {
-                return "Không có mssv";
-            }
-            else
-            {
-                return this.mssv;
-
-            }
-        }
-        set
-        {
-            this.mssv = value;
-        }
+        this.maSV = maSv;
+        this.hoTen = hoTen;
+        this.tuoi = tuoi;
+        this.gioiTinh = gioiTinh;
     }
 
-    public string NameStudent
+    public string MaSv
     {
-        get
-        {
-            if (this.nameStudent == null)
-            {
-                return "Không có tên";
-            }
-            else
-            {
-                return this.nameStudent;
-
-            }
-            
-        }
-        set
-        {
-            this.nameStudent = value;
-        }
-        
+        get => maSV;
+        set => maSV = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public int AgeStudent
+    public string HoTen
     {
-        get
-        {
-            if (this.ageStudent <= 5)
-            {
-                return 6;
-            }
-            else
-            {
-                return this.ageStudent;
-            }
-        }
+        get => hoTen;
+        set => hoTen = value ?? throw new ArgumentNullException(nameof(value));
     }
-    public string GenderStudent
+
+    public int Tuoi
     {
-        get
+        get => tuoi;
+        set => tuoi = value;
+    }
+
+    public bool GioiTinh
+    {
+        get => gioiTinh;
+        set => gioiTinh = value;
+    }
+    public void themDiem(double diem)
+    {
+        if (diem >= 0 || diem <= 10)
         {
-            if (this.genderStudent == null)
-            {
-                return "Không có giới tính";
-            }
-            else
-            {
-                return this.genderStudent;
-            }
+            diemMH.Add(diem);
+        }
+        else
+        {
+            Console.WriteLine("Điểm không hợp lệ ");
         }
     }
 
-    public void addMonHoc(MonHoc monHoc)
+    public string xuatDiem()
     {
-        danhsachMonHoc.Add(monHoc);
+        return string.Join(", ", diemMH);
     }
     public override string ToString()
     {
-        return $"MSSV: {MSSV} - Tên: {NameStudent} - Tuổi: {AgeStudent} - Giới tính: {GenderStudent} ";
+        string gioitinh = (GioiTinh) ? "NỮ" : "NAM";
+        return $"MSSV: {MaSv} - Tên: {HoTen} - Tuổi: {Tuoi} - Giới tính: {gioitinh} - Điểm:[ {xuatDiem()} ]";
     }
-
-    public void xuatDanhSachMonHoc()
-    {
-        Console.WriteLine($"Danh sách môn học của {this.MSSV} - ");
-        foreach (MonHoc mh in danhsachMonHoc)
-        {
-            Console.WriteLine($"{mh}, ");
-        }
-
-        Console.WriteLine();
-    }
-    
 }
+    
